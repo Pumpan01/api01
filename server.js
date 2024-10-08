@@ -110,7 +110,6 @@ app.post('/api/posts', authenticateToken, upload.single('image'), async (req, re
 });
 
 
-
 // เส้นทางสำหรับดึงโพสต์ทั้งหมดของผู้ใช้ที่ล็อกอิน
 app.get('/api/posts', authenticateToken, async (req, res) => {
     try {
@@ -124,9 +123,7 @@ app.get('/api/posts', authenticateToken, async (req, res) => {
 });
 
 
-
-
-/// เส้นทางสำหรับการลบโพสต์
+// เส้นทางสำหรับการลบโพสต์
 app.delete('/api/posts/:id', authenticateToken, async (req, res) => {
     const postId = req.params.id; // รับ ID ของโพสต์ที่ต้องการลบ
     try {
@@ -144,6 +141,9 @@ app.delete('/api/posts/:id', authenticateToken, async (req, res) => {
         res.status(500).json({ message: 'เกิดข้อผิดพลาดในการลบโพสต์' });
     }
 });
+
+
+
 // เส้นทางสำหรับการแก้ไขโพสต์
 app.put('/api/posts/:id', authenticateToken, async (req, res) => {
     const postId = req.params.id; // รับ ID ของโพสต์ที่ต้องการแก้ไข
@@ -164,7 +164,6 @@ app.put('/api/posts/:id', authenticateToken, async (req, res) => {
         res.status(500).json({ message: 'เกิดข้อผิดพลาดในการแก้ไขโพสต์' });
     }
 });
-
 
 // เส้นทางสำหรับอัปเดตโปรไฟล์ผู้ใช้ (ต้องยืนยันตัวตน)
 app.post('/updateProfile', authenticateToken, upload.single('profilePicture'), async (req, res) => {
